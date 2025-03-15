@@ -1,0 +1,41 @@
+name: DeploymentJobs
+
+on:
+  workflow_dispatch:
+    inputs:
+      release:
+        description: 'release'
+        required: true
+        type: string
+      baselineTag: 
+        description: 'baseline tag'  
+        required: true
+        type: choice
+        options:
+          - LatestTag
+          - BaseTag
+          - CustomTag
+        default: CustomTag
+      customTagName:
+        description: 'custom tag'
+        required: true
+        type: choice
+        options:
+          - initialtag
+          - basetag
+        default: initialtag
+           
+jobs:
+
+  DeployDEV:
+    
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: run python script
+        run: |
+              echo "Hi Vivek!"
