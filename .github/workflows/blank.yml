@@ -7,6 +7,7 @@ on:
         description: 'release'
         required: true
         type: string
+        default: initialRelease
       baselineTag: 
         description: 'baseline tag'  
         required: true
